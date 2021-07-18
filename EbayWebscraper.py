@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
-name_list = ["Ramen", "Monster Hunter World", "Adhesive page markers", "Calculator", "arduino", "gtx 1070",
-             "bluetooth headphones", "coffee machine", "sweet tea", "Python textbook"]
+name_list = ["rings", "dog tags", "paper",  
+             "cd player", "bowl"]
 
-def make_urls(names):
+def create_urls(names):
     # eBay url that can be modified to search for a specific item on eBay
     url = "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1312.R1.TR11.TRC2.A0.H0.XIp.TRS1&_nkw="
     # List of urls created
@@ -18,7 +18,7 @@ def make_urls(names):
     # Returns the list of completed urls
     return urls
 
-def ebay_scrape(urls):
+def scrape(urls):
     for url in urls:
         # Downloads the eBay page for processing
         res = requests.get(url)
@@ -36,4 +36,4 @@ def ebay_scrape(urls):
         print("Item Name: " + name)
         print("Price: " + price + "\n")
 
-ebay_scrape(make_urls(name_list))
+scrape(create_urls(name_list))
